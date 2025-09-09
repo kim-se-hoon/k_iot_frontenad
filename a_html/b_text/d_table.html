@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>d_table.html</title>
   <style>
-    table, th, td {
+    table,
+    th,
+    td {
       border: 1px solid #ccc;
       border-collapse: collapse;
     }
@@ -51,33 +53,33 @@
       <td>3행 3열</td>
     </tr>
   </table>
-    <table>
-      <caption>학생 출석부</caption>
-      <thead>
-        <tr>
-          <th>이름</th>
-          <th>출석 여부</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>김세훈</td>
-          <td>참여</td>
-        </tr>
-        <tr>
-          <td>이승하</td>
-          <td>불참</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>총 참여 인원</td>
-          <td>1</td>
-        </tr>
-      </tfoot>
-    </table>
+  <table>
+    <caption>학생 출석부</caption>
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>출석 여부</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>김세훈</td>
+        <td>참여</td>
+      </tr>
+      <tr>
+        <td>이승하</td>
+        <td>불참</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>총 참여 인원</td>
+        <td>1</td>
+      </tr>
+    </tfoot>
+  </table>
 
-    <!-- 
+  <!-- 
       ! 테이블 병합
 
       행 단위 병합(rowspan)
@@ -106,7 +108,7 @@
 
   <table>
     <caption>colspan 예제</caption>
-    <tr> 
+    <tr>
       <td colspan="2">첫 번째 행의 첫 번째 셀</td>
       <!-- <td>첫 번째 행의 두 번째 셀</td> -->
     </tr>
@@ -121,27 +123,27 @@
   <table>
     <h2>상품 구성</h2>
     <caption>선물용과 가정용 상품 구성</caption>
-  <thead>
-    <tr>
-      <th>용도</th>
-      <th>중량</th>
-      <th>갯수</th>
-      <th>가격</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td style="color: red;" rowspan="2">선물용</td>
-    <td>3kg</td>
-    <td>11~16과</td>
-    <td>35,000원</td>
-  </tr>
-    <tr>
-      <!-- <td>선물용</td> -->
-      <td>3kg</td>
-      <td>18~26과</td>
-      <td>52,000원</td>
-    </tr>
+    <thead>
+      <tr>
+        <th>용도</th>
+        <th>중량</th>
+        <th>갯수</th>
+        <th>가격</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color: red;" rowspan="2">선물용</td>
+        <td>3kg</td>
+        <td>11~16과</td>
+        <td>35,000원</td>
+      </tr>
+      <tr>
+        <!-- <td>선물용</td> -->
+        <td>3kg</td>
+        <td>18~26과</td>
+        <td>52,000원</td>
+      </tr>
       <tr>
         <td style="color: blue;" rowspan="2">가정용</td>
         <td>3kg</td>
@@ -154,8 +156,8 @@
         <td>18~26과</td>
         <td>47,000</td>
       </tr>
-  </tbody>
-    
+    </tbody>
+
   </table>
 </body>
 
