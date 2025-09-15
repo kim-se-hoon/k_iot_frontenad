@@ -1,0 +1,38 @@
+/* 
+# 클래스(class) 스타일 선택자
+: .클래스명 으로 선택자 지정
+*/
+
+.heading2 {
+  color: lightgreen;
+}
+
+/* 
+# 태그(타입, 요소) 스타일
+: 선택자를 태그명으로 지정
+
+*/
+h1 {
+  color: lightcoral;
+}
+
+h2 {
+  color: lightblue;
+}
+
+/* 중요도 & 적용 범위 같음: 작성 순서에 따라 표시 */
+p {
+  color: yellow;
+  background-color: tan;
+}
+
+p {
+  color: green;
+}
+
+p {
+  color: tomato;
+  /* 덮어쓰지 않는 스타일은 그대로 적용! (배경색!)
+    > 같은 속성만 덮어쓰기!
+  */
+}
