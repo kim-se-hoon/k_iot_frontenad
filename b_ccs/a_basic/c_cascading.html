@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>c_cascading.html</title>
   <link rel="stylesheet" href="c_cascading.css">
 </head>
+
 <body>
   <!-- 
   ! 스타일 적용 우선순위 (중요도 > 적용범위 > 소스 코드 작성 순서)
@@ -41,14 +43,33 @@
     
     >> 나중에 작성한 스타일이 먼저 작성한 스타일을 덮는다. (Cascading)
   -->
-    <h1>스타일 캐스캐이딩</h1>
+  <h1>스타일 캐스캐이딩</h1>
 
-    <h2 class="heading2">IoT CSS 수업</h2>
-    <p>2025 / 09 / 15 월요일</p>
+  <h2 class="heading2">IoT CSS 수업</h2>
+  <p>2025 / 09 / 15 월요일</p>
 
-    <h2 class="heading2">이번주 금요일부터 휴강입니다.</h2>
-    <p>다음주 일요일까지 휴강입니다.</p>
+  <h2 class="heading2">이번주 금요일부터 휴강입니다.</h2>
+  <p>다음주 일요일까지 휴강입니다.</p>
 
-    <h2>클래스 선택자가 없는 h2</h2>
+  <h2>클래스 선택자가 없는 h2</h2>
+
+  <hr />
+
+  <!-- div#containar>div#inner>p.text*3 -->
+  <!--
+  ! 스타일 상속
+  : 부모 요소에서 자식 요소로 스타일 전달
+
+  cf) 배경색 & 배경이미지는 상속 X
+  -->
+  <div id="containar">
+    <div id="inner">
+      <span class="text">one</span>
+      <span class="text">two</span>
+      <span class="text">three</span>
+    </div>
+  </div>
+
 </body>
+
 </html>
