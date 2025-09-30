@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pratice_card.html</title>
+  <title>practice_card.html</title>
   <style>
     body {
       display: flex;
@@ -26,6 +26,7 @@
       /* 지정된 너비와 높이값 + radius를 제외한 영역을 숨김 처리 */
       overflow: hidden;
     }
+
     .card:hover {
       transform: scale(1.05);
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -45,20 +46,20 @@
       margin: 0;
     }
 
-    .card-taxt {
+    .card-text {
       font-size: 16px;
       color: #666;
     }
   </style>
 </head>
 <body>
-  <!-- duv.card>img+div.card-cotent>h3.card-title+p.card-text -->
-  <duv class="card">
-    <img src="../우리집 강아지 이미지 copy.jpg" alt="우리집 강아지">
-    <div class="card-cotent">
+  <!-- div.card>img+div.card-content>h3.card-title+p.card-text -->
+  <div class="card">
+    <img src="../우리집 강아지 이미지 copy.jpg" alt="강아지 이미지">
+    <div class="card-content">
       <h3 class="card-title">귀여운 강아지</h3>
-      <p class="card-text">우리집 강아지</p>
+      <p class="card-text">웃는 강아지는 귀여워 :)</p>
     </div>
-  </duv>
+  </div>
 </body>
 </html>
