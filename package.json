@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/kim-se-hoon/k_iot_frontenad/issues"
   },
-  "homepage": "https://github.com/kim-se-hoon/k_iot_frontenad#readme"
+  "homepage": "https://github.com/kim-se-hoon/k_iot_frontenad#readme",
+  "dependencies": {
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
 }
