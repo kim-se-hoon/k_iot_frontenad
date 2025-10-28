@@ -1,79 +1,89 @@
+/* 전체 배경 및 기본 여백 설정 */
 body {
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
+  background-color: #f0f0f0; /* 배경색: 연한 회색 */
+  margin: 0;                /* 브라우저 기본 여백 제거 (전체 페이지 끝까지) */
+  padding: 0;               /* 내부 여백 제거 */
 }
 
+/* 페이지 전체를 감싸는 컨테이너 */
 #app {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;                           /* 최대 너비: 600px (그 이상으로 넓어지지 않음) */
+  margin: 50px auto;                          /* 위/아래 여백 50px, 좌우는 자동으로 중앙 정렬 */
+  padding: 20px;                              /* 내부 여백: 20px */
+  background-color: #fff;                     /* 배경색: 흰색 (카드처럼 보이게) */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);    /* 그림자: 요소 주위에 부드러운 그림자(깊이 느낌) */
 }
 
+/* 페이지 제목 스타일 */
 h1 {
-  font-style: 16px;
-  margin-bottom: 20px;
+  font-style: 16px;    /* ⚠️ 일반적으로 font-style은 italic/normal 사용. (여기는 아마 font-size 의 오타) */
+  margin-bottom: 20px; /* 아래쪽 여백: 20px (제목과 다음 요소 간 간격) */
 }
 
+/* 사용자 목록 영역 */
 #user-list {
-  margin-top: 20px;
+  margin-top: 20px;    /* 위쪽 여백: 20px (앱 컨텐츠와 목록 사이 간격) */
 }
 
+/* 각 사용자 카드 기본 스타일 */
 .user-card {
-  padding: 10px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
-  background-color: #fafafa;
+  padding: 10px;                    /* 내부 여백: 10px (내용과 테두리 사이 공간) */
+  border: 1px solid #ddd;           /* 테두리: 연한 회색 실선 1px */
+  margin-bottom: 10px;              /* 아래쪽 여백: 카드끼리의 간격 10px */
+  background-color: #fafafa;        /* 카드 배경색: 아주 연한 회색 */
   /* 해당 카드 클릭 시 각 요소에 대한 상세 정보가 modal로 출력 */
-  cursor: pointer;
+  cursor: pointer;                  /* 마우스 포인터가 손가락 모양으로 바뀜 → 클릭 가능 표시 */
 }
 
+/* 카드에 마우스 올렸을 때 (호버 효과) */
 .user-card:hover {
-  background-color: #e0e0e0;
+  background-color: #e0e0e0; /* 마우스 오버 시 배경색이 조금 더 진해짐 (시각적 반응) */
 }
 
+/* 모달 전체(배경을 덮는 큰 영역) */
 #user-modal {
   /* 보여지지 않도록 설정: 각 요소 클릭 시에만 보여짐 */
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  display: none;                       /* 초기에는 숨겨짐 (모달을 띄울 때 display:block 등으로 변경) */
+  position: fixed;                     /* 화면에 고정: 스크롤해도 같은 위치에 유지 */
+  left: 0;                             /* 왼쪽 0 (화면 왼쪽 끝) */
+  top: 0;                              /* 위 0 (화면 상단 끝) */
+  width: 100%;                         /* 너비: 화면 전체 100% */
+  height: 100%;                        /* 높이: 화면 전체 100% (EX) height: 100%; → 높이는 100퍼) */
   /* z-index; 요소의 배치 순서를 설정 (기본값 0, 숫자가 클수록 전반/우선 배치) */
-  z-index: 1;
+  z-index: 1;                          /* 쌓임 순서: 1 (다른 것들보다 위에 보이도록 설정) */
 
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4); /* 반투명 검정 배경: 뒤 페이지를 어둡게 가림 (오버레이 효과) */
 
-  padding-top: 60px;
+  padding-top: 60px;                   /* 상단 여백: 60px (모달 콘텐츠를 화면 상단에서 약간 아래로) */
   
   /* display: flex;
   justify-content: center;
   align-items: center; */
-
+  /* 위 코드는 주석 처리됨 → flex로 중앙 정렬하는 대안. 현재는 주석이라 적용되지 않음 */
 }
 
+/* 모달 안의 실제 콘텐츠 박스 (하얀 카드) */
 .modal-content {
-  background-color: #fefefe;
-  margin: 5% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 10px;
-  max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: #fefefe;                       /* 내용 배경: 거의 흰색 */
+  margin: 5% auto;                                 /* 위/아래 여백 5%, 좌우 자동(가로 중앙 정렬) */
+  padding: 20px;                                   /* 내부 여백: 20px */
+  border: 1px solid #888;                          /* 테두리: 중간 회색 1px */
+  border-radius: 10px;                             /* 모서리 둥글게: 반경 10px */
+  max-width: 400px;                                /* 최대 너비: 400px */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);       /* 그림자: 약간 더 진한 그림자 (모달이 떠있는 느낌) */
 }
 
+/* 모달 닫기(X) 버튼 스타일 */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  color: #aaa;            /* 글자색: 연한 회색 */
+  float: right;           /* 오른쪽으로 띄움 (컨텐츠 상단 우측에 위치) */
+  font-size: 28px;        /* 글자 크기: 28px (크게 보여서 닫기 버튼처럼 보임) */
+  font-weight: bold;      /* 글자 굵기: 굵게 */
 }
 
+/* 닫기 버튼에 마우스 올렸을 때 효과 */
 .close:hover, .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+  color: black;           /* 마우스 오버/포커스 시 글자색을 검정으로 변경 → 강조 */
+  text-decoration: none;  /* 밑줄 제거(링크 스타일이 있을 경우) */
+  cursor: pointer;        /* 클릭 가능한 포인터로 변경 */
 }
