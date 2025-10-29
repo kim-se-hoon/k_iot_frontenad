@@ -1,139 +1,165 @@
 // main.ts
 
 /*
-  ! JS의 canvas 요소
-  : HTML5의 <canvas> 태그를 이용하여 JavaScript로 동적인 그래픽을 그리는 기술
-  - 웹 페이지에 도화지 같은 영역을 생성
-  - 2D & 3D 그래픽, 애니메이션, 데이터 시각화 등의 시각적 효과 구현 가능
+  ==========================================
+  HTML5 Canvas + TypeScript 그림판 프로젝트
+  ==========================================
+
+  ✔ 핵심 개념
+  - <canvas> : 브라우저에서 2D 그래픽을 직접 그릴 수 있는 HTML5 요소
+  - JS로 접근하여 선, 도형, 이미지, 애니메이션 등을 표현 가능
+  - 브라우저 내 "도화지" 역할
+
+  ✔ 학습 포인트
+  - TypeScript의 제네릭, keyof, 타입 정의
+  - DOM 조작
+  - Canvas API (2D Context)
+  - 이벤트 핸들러 (mousedown, mousemove 등)
 */
 
-const app = document.getElementById('app');
+const app = document.getElementById('app'); // <div id="app"> 요소 가져오기
 
-//! 1) 그림판 툴 상태를 담는 객체
+// =======================================================
+// 1. 툴(도구) 상태를 담는 타입 정의
+// =======================================================
 type ToolState = {
-  color: string; // 브러시 색상
-  size: number;  // 브러시 크기
-  isEraser: boolean; // 지우개 모드 여부
-}
+  color: string;      // 현재 선택된 색상 (브러시 색)
+  size: number;       // 브러시 굵기
+  isEraser: boolean;  // 지우개 모드 여부
+};
 
-//! 2) 기본 상태 설정
+// =======================================================
+// 2. 초기 툴 상태 (기본값)
+// =======================================================
 const toolState: ToolState = {
-  color: '#000000',   // 기본 검정색
-  size: 5,              // 기본 굵기
-  isEraser: false       // 기본 펜 모드
-}
+  color: '#000000', // 기본 색상: 검정
+  size: 5,          // 기본 두께: 5px
+  isEraser: false,  // 기본 모드: 펜
+};
 
-//! 3) 상태 변경 함수
+// =======================================================
+// 3. 상태 변경 함수 (제네릭 사용)
+// =======================================================
+/*
+  - keyof ToolState
+    : 'color' | 'size' | 'isEraser' 형태의 문자열 리터럴 유니언 반환
 
-// cf) keyof 연산자
-// : 객체의 키 값들을 숫자나 문자열 리터럴 유니언 값으로 생성
-// EX) 'color' | 'size' | 'isEraser'
+  - 제네릭 <K extends keyof ToolState>
+    : K는 ToolState의 키 중 하나만 받을 수 있음
 
-//? @Param: ToolState 타입의 키와 해당 키의 타입을 제네릭을 통해 설정
-// EX) key: 'color', value: string (ToolState color의 타입)
-// EX) key: 'size', value: number
-// EX) key: 'isEraser', value: boolean
-
+  - value: ToolState[K]
+    : key에 맞는 타입 자동 추론 (color면 string, size면 number)
+*/
 function setTool<K extends keyof ToolState>(key: K, value: ToolState[K]) {
-  // key: 'color' | 'size' | 'isEraser'
-  // value: 각 속성값에 맞는 타입을 가진 데이터
   toolState[key] = value; // 상태 업데이트
 }
 
-//! 4) 툴바를 만드는 함수
+// =======================================================
+// 4. 툴바 생성 함수 (색상, 두께, 지우개, 초기화, 저장)
+// =======================================================
 function createToolbar(): HTMLElement {
-  //@ 색상 선택
-  const colorInput = document.createElement('input')
+  // 색상 선택 input
+  const colorInput = document.createElement('input');
   colorInput.type = 'color';
   colorInput.value = toolState.color; // 초기값 설정
-  colorInput.oninput = () => setTool('color', colorInput.value)
-  
-  //@ 브러시 크기 조절
-  const sizeInput = document.createElement('input')
+  colorInput.oninput = () => setTool('color', colorInput.value); // 색상 변경 시 상태 업데이트
+
+  // 브러시 크기 조절 (슬라이더)
+  const sizeInput = document.createElement('input');
   sizeInput.type = 'range';
   sizeInput.min = '1';
   sizeInput.max = '10';
-  // cf) input 태그의 value 값은 string
   sizeInput.value = toolState.size.toString();
   sizeInput.oninput = () => setTool('size', parseInt(sizeInput.value));
 
-  //@ 지우개 버튼
-  const eraserbutton = document.createElement('button')
-  eraserbutton.textContent = '지우개';
-  eraserbutton.onclick = () => {
-    // 상태 토글: 지우개 >> 펜, 펜 >> 지우개
-    toolState.isEraser = !toolState.isEraser;
-    eraserbutton.textContent = toolState.isEraser ? '펜' : '지우개';
-  }
+  // 지우개 버튼
+  const eraserButton = document.createElement('button');
+  eraserButton.textContent = '지우개';
+  eraserButton.onclick = () => {
+    toolState.isEraser = !toolState.isEraser; // 상태 토글
+    eraserButton.textContent = toolState.isEraser ? '펜' : '지우개';
+  };
 
-  //@ 캔버스 초기화 버튼
-  const clearButton = document.createElement('button')
+  // 캔버스 초기화 버튼
+  const clearButton = document.createElement('button');
   clearButton.textContent = '초기화';
-  // 지정된 사각형 영역을 지워 투명하게 만드는 기능 (x시작, y시작, x끝, y끝);
   clearButton.onclick = () => ctx?.clearRect(0, 0, canvas.width, canvas.height);
+  // clearRect(x, y, w, h): 지정 영역을 투명하게 지움 (전체 초기화 시 전체 캔버스 지정)
 
-  //@ 그림 저장 버튼
+  // 그림 저장 버튼
   const saveButton = document.createElement('button');
   saveButton.textContent = '저장';
   saveButton.onclick = () => {
     const link = document.createElement('a');
-    link.download = 'drawing.png'   // 저장 파일명
-    link.href = canvas.toDataURL();  // 이미지 URL 생성
-    link.click();                      // 자동 다운로드 실행
-  }
+    link.download = 'drawing.png';        // 저장 파일명
+    link.href = canvas.toDataURL();       // 현재 그림을 Base64 PNG로 변환
+    link.click();                         // 클릭 이벤트로 다운로드 실행
+  };
 
-  //@ 툴바 한 곳에 저장
+  // 툴바 묶기
   const toolbar = document.createElement('div');
   toolbar.className = 'toolbar';
-  toolbar.append(colorInput, sizeInput, eraserbutton, clearButton, saveButton);
+  toolbar.append(colorInput, sizeInput, eraserButton, clearButton, saveButton);
 
-  //@ 툴바 반환: HTMLElement
-  return toolbar;
+  return toolbar; // HTMLElement 반환
 }
 
-//! 5) 캔버스 생성
-const canvas = document.createElement('canvas')
-canvas.width = 800;
-canvas.height = 500;
+// =======================================================
+// 5. 캔버스 생성 및 설정
+// =======================================================
+const canvas = document.createElement('canvas');
+canvas.width = 800;  // 캔버스 너비
+canvas.height = 500; // 캔버스 높이
 
-//! 6) 2D 그리기 컨텍스트 가져오기 (캔버스 영역을 JS로 가져오기)
-const ctx = canvas.getContext('2d');
+// =======================================================
+// 6. 2D 그리기 컨텍스트 가져오기
+// =======================================================
+const ctx = canvas.getContext('2d'); // 2D 그래픽용 컨텍스트 객체
 if (ctx) {
-  ctx.lineCap = 'round'; // 선 끝 둥글게
+  ctx.lineCap = 'round'; // 선 끝을 둥글게 처리
 }
 
-//! 7) 마우스 이벤트 상태
+// =======================================================
+// 7. 마우스 이벤트로 그림 그리기 로직 구현
+// =======================================================
+
+// 현재 마우스를 누르고 있는지 여부
 let isDrawing = false;
 
-//? 마우스를 눌렀을 때
+// 마우스를 누른 시점
 canvas.addEventListener('mousedown', (e) => {
   isDrawing = true;
-  ctx?.beginPath();                   // 경로 시작 - 그리기 시작
-  ctx?.moveTo(e.offsetX, e.offsetY);  // 그리기 시작점 설정
+  ctx?.beginPath();                   // 새로운 선 경로 시작
+  ctx?.moveTo(e.offsetX, e.offsetY);  // 선의 시작 좌표 설정
 });
 
-//? 마우스를 이동 시 (그림을 그리고 있을 때)
+// 마우스를 이동하는 동안 (그리고 있는 중)
 canvas.addEventListener('mousemove', (e) => {
-  if (!isDrawing) return; // 그리지 않을 경우 리턴
+  if (!isDrawing) return; // 누르고 있지 않으면 종료
 
   if (ctx) {
+    // 현재 상태에 맞게 색상, 두께 설정
     ctx.strokeStyle = toolState.isEraser ? '#ffffff' : toolState.color;
     ctx.lineWidth = toolState.size;
-    ctx?.lineTo(e.offsetX, e.offsetY); // 선을 그릴 좌표
-    ctx.stroke() ; // 선 그리기
+    ctx.lineTo(e.offsetX, e.offsetY); // 선의 끝점 지정
+    ctx.stroke(); // 실제 선 그리기
   }
 });
-//? 마우스를 뗐을 때
+
+// 마우스를 뗐을 때
 canvas.addEventListener('mouseup', () => {
-  isDrawing = false; // 그리기 종료
-  ctx?.closePath(); // 경로 종료
+  isDrawing = false;  // 그리기 중단
+  ctx?.closePath();   // 현재 경로 닫기
 });
 
-//? 캔버스를 벗어난 경우 (뗀 경우와 마찬가지로 종료)
+// 마우스가 캔버스 밖으로 나갔을 때도 중단
 canvas.addEventListener('mouseleave', () => {
-  isDrawing = false; // 그리기 종료
-  ctx?.closePath(); // 경로 종료
+  isDrawing = false;
+  ctx?.closePath();
 });
 
-app?.appendChild(createToolbar());
-app?.appendChild(canvas);
+// =======================================================
+// 8. 모든 요소를 페이지에 추가
+// =======================================================
+app?.appendChild(createToolbar()); // 툴바 추가
+app?.appendChild(canvas);          // 캔버스 추가
