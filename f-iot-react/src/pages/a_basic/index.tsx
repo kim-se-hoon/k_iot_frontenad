@@ -6,6 +6,10 @@ import B_Counter from './B_React_Counter';
 import C_Component, { img, Img } from './C_Component';
 import D_JSX from './D_JSX';
 import E_JSX from './E_JSX';
+import G_Props from './G_Props';
+import H_Props from './H_Props';
+import I_Rendering from './I_Rendering';
+import J_Handler from './J_Handler';
 
 const h2Style = {
   backgroundColor: 'black',
@@ -39,6 +43,16 @@ function Index() {
       <h2 style={h2Style}>3. JSX(TSX): 리액트의 기본 문법</h2>
       <D_JSX />
       <E_JSX />
+
+      <h2 style={h2Style}>4. Props: 리액트의 데이터 전달 (부모/자식)</h2>
+      <G_Props />
+      <H_Props />
+
+      <h2 style={h2Style}>5. Rendering: 조건부 렌더링</h2>
+      <I_Rendering />
+
+      <h2 style={h2Style}>6. Handler: 리액트의 이벤트 핸들러</h2>
+      <J_Handler />
     </div>
   )
 }
