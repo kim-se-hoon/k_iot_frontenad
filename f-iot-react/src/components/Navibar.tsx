@@ -1,8 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 //! Link VS NavLink 컴포넌트
-// : a태그와 유사하게 동작
+// : a태그와 유사하게 동작 
 // - 새로고침하지 않고 SPA의 다른 경로로 이동
 // - 해당 링크 클릭 시 이동할 경로(path) 값을 to 속성으로 지정 (필수 속성, href와 유사)
 
@@ -11,10 +11,10 @@ import { NavLink } from 'react-router-dom'
 
 //? 2) NavLink
 // : Link + 현재 활성화 된 페이지 경로에 대한 추가적인 스타일 또는 클래스명 적용 가능
-//& : 현재 경로에 따라 isActive를 사용하여 스타일이나 클래스를 다르게 지정 가능
+//&: 현재 경로에 따라 isActive를 사용하여 스타일이나 클래스를 다르게 지정 가능
 
 function Navibar() {
-  const links = ['/', 'basic', 'ruote', 'hooks', 'hello', 'hi', 'hihello'] 
+  const links = ['/', 'basic', 'route', 'hooks', 'practice/post'];
 
   return (
     <div style={{
@@ -39,7 +39,7 @@ function Navibar() {
             borderRadius: '5px'
           })}
         >
-          {link == '/' ? 'HOME' : link.toUpperCase()}
+          {link === '/' ? 'HOME' : link.toUpperCase()}
         </NavLink>
       ))}
     </div>
