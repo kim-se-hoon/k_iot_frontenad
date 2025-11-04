@@ -1,0 +1,9 @@
+html, body, #root {
+  height: 100%;
+  overflow: auto;
+}
+
+/* 크롬 스크롤바 없애는 방법 */
+::-webkit-scrollbar {
+  display: none;
+}

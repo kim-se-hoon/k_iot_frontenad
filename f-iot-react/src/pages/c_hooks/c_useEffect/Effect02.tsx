@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 
 //! JSONPlaceholder의 posts 데이터를 비동기 함수로 가져오기
@@ -75,7 +74,7 @@ function Effect02() {
         type="text"
         placeholder="검색어를 입력해주세요."
         value={searchTerm}
-        onChange={e => setSearchTerm(e.target.value)}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
       {loading && <div>게시물을 로딩 중입니다.</div>}
       {error && <div>Error: {error}</div>}
