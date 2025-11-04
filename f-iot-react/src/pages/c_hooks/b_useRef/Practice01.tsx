@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 
 //! 예제1) 포커스 제어 (input 자동 포커스)
@@ -8,9 +9,9 @@ function Practice01() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   //? 처음 렌더링 될 때 콜백함수의 기능을 딱 한 번만 실행
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
+  // useEffect(() => {
+  //   inputRef.current?.focus();
+  // }, []);
 
   //^ === Event Handler === //
   const handleLogin = () => {
