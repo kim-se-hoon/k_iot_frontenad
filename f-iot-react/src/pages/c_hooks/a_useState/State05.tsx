@@ -51,7 +51,7 @@ function State05() {
       <p>Name: {name}</p>
       {/* 요소 내부의 이벤트 핸들러는 이벤트 객체의 타입 정의 불필요! */}
       <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} />
-      {/* 논리형: 토글 버튼 */}/ 
+      {/* 논리형: 토글 버튼 */}
       <p>Visiable? : {isVisiable ? 'Yes' : 'No' } </p>
       <button onClick={() => setIsVisiable(!isVisiable)}>토글 버튼</button>
 
