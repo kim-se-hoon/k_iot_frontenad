@@ -30,6 +30,14 @@ import Effect_Practice01 from "./c_useEffect/Practice01";
 import CollapsibleSection from "@/components/CollapsibleSection";
 import A_UseCallback from "./d_callback_memo/A_UseCallback";
 import B_UseMemo from "./d_callback_memo/B_UseMemo";
+import Reducer01 from "./e_useReducer/Reducer01";
+import Reducer02 from "./e_useReducer/Reducer02";
+import Custom01 from "./f_custom/Custom01";
+import Custom02 from "./f_custom/Custom02";
+import Custom03 from "./f_custom/Custom03";
+import ToggleSection from "@/components/ToggieSection";
+import TodoAppLocalStorage from "@/_practices/c_hooks/TodoAppLocalStorage";
+import Webcam from "./Webcam";
 
 // Index 컴포넌트: 이 파일의 주인공 함수
 // 모든 리액트 훅(useState, useRef, useEffect)을 모아서 보여주는 페이지
@@ -51,8 +59,24 @@ function Index() {
       contents: [<Effect01 />, <Effect02 />, <Effect_Practice01 />], // 해당 예제들
     },
     {
-      title: "️4리액트 Hooks - useEffect", // 세 번째 섹션 이름
+      title: "️4리액트 Hooks - useEffect", // 네 번째 섹션 이름
       contents: [<A_UseCallback />, <B_UseMemo/>], // 해당 예제들
+    },
+    {
+      title: "️5리액트 Hooks - useEffect", // 다섯 번째 섹션 이름
+      contents: [<Reducer01 />, <Reducer02/> ], // 해당 예제들
+    },
+    {
+      title: "️6리액트 Hooks - useEffect", // 여섯 번째 섹션 이름
+      contents: [<Custom01 />, <Custom02 />, <Custom03 />], // 해당 예제들
+    },
+    {
+      title: "️7리액트 Hooks - Todo", // 일곱 번째 섹션 이름
+      contents: [<TodoAppLocalStorage />], // 해당 예제들
+    },
+    {
+      title: "️8리액트 Hooks - Webcam", // 일곱 번째 섹션 이름
+      contents: [<Webcam />] // 해당 예제들
     },
   ];
 
