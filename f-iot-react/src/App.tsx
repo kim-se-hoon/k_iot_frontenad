@@ -3,13 +3,14 @@ import './App.css'
 import Basic from '@/pages/a_basic'; 
 import RoutePages from '@/pages/b_Route';
 import Hooks from '@/pages/c_hooks';
+import HTTP from '@/pages/d_http';
 
 import Navibar from './components/Navibar';
 import PostList from './_practices/a_basic/PostList';
 import PostDetail from './components/PostDetail';
 import SearchApp from './_practices/c_hooks/SearchApp';
 import Z_Products from './pages/b_Route/Z_Products';
-import Z_ProductDetail from './pages/b_Route/Z_ProductsDetail';
+import Z_ProductDetail from './pages/b_Route/Z_ProductDetail';
 import Z_ProductInfo from './pages/b_Route/Z_ProductInfo';
 import Z_ProductReviews from './pages/b_Route/Z_ProductReviews';
 import Z_Dashboard from './pages/b_Route/Z_Dashboard';
@@ -32,6 +33,7 @@ function App() {
         */}
         <Route path='/route/*' element={<RoutePages />} />
         <Route path='/hooks' element={<Hooks />} />
+        <Route path='/http' element={<HTTP />} />
 
         {/* //@ _practice 실습 코드 */}
         <Route path='/practice/post' element={<PostList />} />

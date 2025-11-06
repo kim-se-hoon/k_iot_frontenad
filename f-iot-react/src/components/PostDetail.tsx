@@ -6,7 +6,6 @@ function PostDetail() {
   const params = useParams();
   console.log(params);
 
-
   return (
     <div>
       <h1>User ID: {params.id}</h1>

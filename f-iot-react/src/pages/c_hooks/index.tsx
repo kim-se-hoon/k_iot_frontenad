@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 // React에서 화면을 만들 때 꼭 가져와야 하는 기본 도구
-// useState, useEffect는 React가 제공하는'훅(Hook)'이라는 특별한 기능임  
+// useState, useEffect는 React가 제공하는'훅(Hook)'이라는 특별한 기능임
 // Hook이란? - 함수형 컴포넌트(Functional Component)가 클래스형 컴포넌트(Class Component)의기능을 사용 할 수 있도록 해주는' 특별한 기능임
 // useState → 상태(값)을 저장하고 바꿀 때 사용
 // useEffect → 화면이 처음 켜질 때나 값이 바뀔 때 어떤 일을 자동으로 시키는 기능
 
 // 아래는 각각의 리액트 예제 파일을 불러오는 코드
-// 예를 들어 State01 파일 안에는 useState를 사용하는 예제가 들어있음 
+// 예를 들어 State01 파일 안에는 useState를 사용하는 예제가 들어있음
 import State01 from "./a_useState/State01";
 import State02 from "./a_useState/State02";
 import State03 from "./a_useState/State03";
@@ -35,7 +35,7 @@ import Reducer02 from "./e_useReducer/Reducer02";
 import Custom01 from "./f_custom/Custom01";
 import Custom02 from "./f_custom/Custom02";
 import Custom03 from "./f_custom/Custom03";
-import ToggleSection from "@/components/ToggieSection";
+import ToggleSection from "@/components/ToggleSection";
 import TodoAppLocalStorage from "@/_practices/c_hooks/TodoAppLocalStorage";
 import Webcam from "./Webcam";
 
@@ -48,7 +48,14 @@ function Index() {
   const sectionsData = [
     {
       title: "1️리액트 Hooks - useState", // 첫 번째 섹션 이름
-      contents: [<State01 />, <State02 />, <State03 />, <State04 />, <State05 />, <State06 />], // 해당 예제들
+      contents: [
+        <State01 />,
+        <State02 />,
+        <State03 />,
+        <State04 />,
+        <State05 />,
+        <State06 />,
+      ], // 해당 예제들
     },
     {
       title: "️2리액트 Hooks - useRef", // 두 번째 섹션 이름
@@ -59,24 +66,24 @@ function Index() {
       contents: [<Effect01 />, <Effect02 />, <Effect_Practice01 />], // 해당 예제들
     },
     {
-      title: "️4리액트 Hooks - useEffect", // 네 번째 섹션 이름
-      contents: [<A_UseCallback />, <B_UseMemo/>], // 해당 예제들
+      title: "️4리액트 Hooks - useCallback & useMemo", // 네 번째 섹션 이름
+      contents: [<A_UseCallback />, <B_UseMemo />], // 해당 예제들
     },
     {
-      title: "️5리액트 Hooks - useEffect", // 다섯 번째 섹션 이름
-      contents: [<Reducer01 />, <Reducer02/> ], // 해당 예제들
+      title: "️5리액트 Hooks -  useReducer", // 다섯 번째 섹션 이름
+      contents: [<Reducer01 />, <Reducer02 />], // 해당 예제들
     },
     {
-      title: "️6리액트 Hooks - useEffect", // 여섯 번째 섹션 이름
+      title: "️6리액트 Hooks -custom Hooks", // 여섯 번째 섹션 이름
       contents: [<Custom01 />, <Custom02 />, <Custom03 />], // 해당 예제들
     },
     {
-      title: "️7리액트 Hooks - Todo", // 일곱 번째 섹션 이름
+      title: "️7리액트 Hooks -Todo(LocalStorage)", // 일곱 번째 섹션 이름
       contents: [<TodoAppLocalStorage />], // 해당 예제들
     },
     {
       title: "️8리액트 Hooks - Webcam", // 일곱 번째 섹션 이름
-      contents: [<Webcam />] // 해당 예제들
+      contents: [<Webcam />], // 해당 예제들
     },
   ];
 
