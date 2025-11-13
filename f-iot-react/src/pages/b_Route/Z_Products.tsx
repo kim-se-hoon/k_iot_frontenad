@@ -69,11 +69,11 @@ function Z_Products() {
           <li key={product.id}>
             {/* state를 사용하여 location 상태 전달 */}
             <Link
-              to={`/products/${product.id}`}
+              to={`/products/${product.id}`} 
               // 기본 경로 뿐만 아니라 쿼리까지 포함하여 state 전달
               // : 상세페이지에서 뒤로 갈 때
-              // - /products?categroy=ㅇ이전
-              state={{ from: location.pathname }}
+              // - /products?categroy=이전카테고리
+              state={{ from: location.pathname + location.search }}
             >
               {product.name}
             </Link>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
-import './Z_ProductsDetail.css'
+import './Z_ProductsDetail.css';
 
 function Z_ProductDetail() {
    // useParams()에서 추출하는 값의 속성명은 동적변수(:변수명)과 일치
