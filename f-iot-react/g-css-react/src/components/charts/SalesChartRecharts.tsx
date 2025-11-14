@@ -47,6 +47,10 @@ function SalesChartRecharts() {
             stroke: 선의 색상
 
           */}
+          {/* 
+          "Y축"
+          : 데이터, Line이 어떤 필드를 그릴지 결정하고 + Y출 기준 데이터를 받아 YAxis는 자동 스케일만 계산 
+          */}
           <Line 
             type='monotone' 
             dataKey="sales" 

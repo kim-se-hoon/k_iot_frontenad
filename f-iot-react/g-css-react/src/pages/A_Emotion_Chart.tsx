@@ -11,6 +11,7 @@ import React from 'react'
 //      + ResponsiveContainer로 반응형 처리 용이
 
 //@ 설치
+// npm create vite@latest g-css-react -- --template react-ts
 
 // 1) Chart.js (+ React wrapper)
 // npm install chart.js react-chartjs-2
